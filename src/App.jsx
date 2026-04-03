@@ -6,7 +6,7 @@ import Cuisine from './components/Cuisine'
 const App = () => {
   return (
     <div>
-      <div className="min-h-screen bg-gray-950 font-sans text-gray-100">
+      <div className="min-h-screen bg-gray-950 font-sans text-gray-100 no-scrollbar">
         <Navbar/>
         <Cuisine/>
         <MainRoute/>
