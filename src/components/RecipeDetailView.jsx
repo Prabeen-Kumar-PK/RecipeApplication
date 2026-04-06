@@ -32,28 +32,28 @@ const RecipeDetailView = () => {
     );
   return (
     <>
-      <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="text-gray-100 hover:text-cyan-300 mb-4  text-xl font-light tracking-wide px-4 flex items-center group"
+          className="group mb-4 flex items-center px-1 text-base font-light tracking-wide text-gray-100 hover:text-cyan-300 sm:px-4 sm:text-xl"
          
         >
-          <ChevronLeft className="w-6 h-6 mr-1"/>
+          <ChevronLeft className="mr-1 h-5 w-5 sm:h-6 sm:w-6"/>
          Back to Home Page
         </Link>
 
-        <div className="bg-gray-900 rounded-3xl  shadow-2xl p-6 md:p-12 shadow-black/70 border border-gray-800">
-         <div className="flex space-x-12 flex-wrap justify-between items-center ">
-          <div className="mb-8 lg:mb-0">
-            <h1 className="text-3xl font-bold text-gray-100 mb-6 leading-tight">{meal?.strMeal}</h1>
+        <div className="rounded-3xl border border-gray-800 bg-gray-900 p-4 shadow-2xl shadow-black/70 sm:p-6 md:p-8 lg:p-12">
+         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+          <div className="w-full lg:mb-0 lg:max-w-[420px]">
+            <h1 className="mb-6 text-2xl font-bold leading-tight text-gray-100 sm:text-3xl">{meal?.strMeal}</h1>
             <img
               src={meal?.strMealThumb}
               alt={meal?.strMeal} 
-              className="h-100 rounded-lg shadow-xl border border-gray-900 shadow-white/25 mb-6 hover:ring-1 hover:ring-cyan-400 transition duration-500 hover:scale-105 hover:border-none hover:shadow-cyan-400/30"
+              className="mb-2 aspect-square w-full rounded-lg border border-gray-900 object-cover shadow-xl shadow-white/25 transition duration-500 hover:scale-[1.02] hover:border-none hover:ring-1 hover:ring-cyan-400 hover:shadow-cyan-400/30"
               />
           </div>
-          <div className=" mb-8 lg:mb-0 bg-gray-800 rounded-lg p-6 lg:w-1/2 shadow-inner  border border-gray-900 shadow-gray-50/20 hover:ring-1 hover:ring-cyan-400 transition duration-500">
-            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <div className="w-full rounded-lg border border-gray-900 bg-gray-800 p-4 shadow-inner shadow-gray-50/20 transition duration-500 hover:ring-1 hover:ring-cyan-400 sm:p-6 lg:mb-0 lg:w-1/2">
+            <h2 className="mb-4 flex items-center text-xl font-semibold sm:text-2xl">
               <Utensils className="mr-2 text-cyan-300 " />
               Main Ingredients
               </h2>
@@ -61,20 +61,22 @@ const RecipeDetailView = () => {
               <br />
             <ul className="list-none list-inside  grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 p-0">
               {ingredients.map((item, index) => (
-                <li key={index} className="text-gray-100 flex items-center gap-2">
-                  <ChevronRight className="w-4 h-4 text-cyan-400" />
-                  {item.measure} <span className="text-gray-400"> {item.ingredient}  </span>
+                <li key={index} className="flex items-center gap-2 text-sm text-gray-100 sm:text-base">
+                  <ChevronRight className="h-4 w-4 shrink-0 text-cyan-400" />
+                  <span className="break-words">
+                    {item.measure} <span className="text-gray-400"> {item.ingredient}  </span>
+                  </span>
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 pt-4 border-t border-gray-700">
-              <div className="text-lg text-gray-400 space-x-3 flex flex-wrap ga">
-                <div className="bg-gray-900  px-4  py-1.5  rounded-full font-semibold text-sm mb-2">
+              <div className="flex flex-wrap gap-3 text-lg text-gray-400">
+                <div className="mb-2 rounded-full bg-gray-900 px-4 py-1.5 text-sm font-semibold">
                 <span className="text-gray-400  font-light">Cuisine: </span>
                 <span className="text-gray-100 font-extralight">{meal?.strArea}</span>
                 </div>
-                <div className="bg-gray-900   px-4  py-1.5  rounded-full font-semibold text-sm mb-2">
+                <div className="mb-2 rounded-full bg-gray-900 px-4 py-1.5 text-sm font-semibold">
                   <span className="text-gray-400  font-light">Category: </span>
                   <span className="text-gray-100 font-extralight">{meal?.strCategory}</span>
                 </div>
@@ -83,20 +85,20 @@ const RecipeDetailView = () => {
           </div>
 
          </div>
-          <div className="mt-8 bg-gray-800 rounded-lg p-6 shadow-inner border border-gray-900 shadow-gray-50/20 hover:ring-1 hover:ring-cyan-400 transition duration-500">  
-            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <div className="mt-8 rounded-lg border border-gray-900 bg-gray-800 p-4 shadow-inner shadow-gray-50/20 transition duration-500 hover:ring-1 hover:ring-cyan-400 sm:p-6">  
+            <h2 className="mb-4 flex items-center text-xl font-semibold sm:text-2xl">
               <CookingPot  className="mr-2 text-cyan-300 " />
               Cooking Instructions
             </h2>
               <hr className="text-gray-100/20"/>
               <br />
-              <p className="text-gray-400 leading-relaxed font-light">
+              <div className="text-sm leading-relaxed font-light text-gray-400 sm:text-base">
                 {meal?.strInstructions.split("\r\n").map((line, index) => (
                   <p key={index} className="mb-2">
                     {line}
                   </p>
                 ))}
-              </p>
+              </div>
           </div>
         </div>
 

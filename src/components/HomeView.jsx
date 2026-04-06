@@ -4,10 +4,10 @@ import TrendingRecipes from "./TrendingRecipe";
 import CategorySelection from "./CategorySelection";
 import { API_URL } from "../hooks/useFetch";
 
-const HomeView = () => {
+const HomeView = ({filterbyCategory}) => {
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 no-scrollbar">
+      <main className="mx-auto max-w-7xl px-4 py-4 no-scrollbar sm:px-6 lg:px-8">
         <RecipeSlider
           title="Staff Curated Picks"
           fetchUrl={`${API_URL}/search.php?f=c`}
@@ -18,7 +18,7 @@ const HomeView = () => {
           fetchUrl={`${API_URL}/filter.php?a=Canadian`}
         />
         
-        <CategorySelection />
+        <CategorySelection  fetchUrl={`${API_URL}/categories.php`} filterbyCategory={filterbyCategory}   />
       </main>
     </>
   );

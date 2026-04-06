@@ -21,16 +21,16 @@ const TrendingRecipe = ({ title, fetchUrl }) => {
     );
   return (
     <>
-      <section className="mt-2 mx-auto">
-        <h2 className="text-3xl font-bold text-gray-100 mb-6 tracking-tight border-1-4 border-amber-400 pl-4 flex items-center">
-          <HandPlatter className="w-6 h-6 mr-3 text-cyan-400" />
+      <section className="mx-auto mt-8">
+        <h2 className="mb-5 flex items-center pl-2 text-2xl font-bold tracking-tight text-gray-100 sm:pl-4 sm:text-3xl">
+          <HandPlatter className="mr-2 h-5 w-5 text-cyan-400 sm:mr-3 sm:h-6 sm:w-6" />
           {title}
         </h2>
 
         <div className="w-full mx-auto">
           <Swiper
-            spaceBetween={10}
-            slidesPerView={4}
+            spaceBetween={12}
+            slidesPerView={2}
             grabCursor={true}
             loop={true}
             autoplay={{
@@ -41,13 +41,19 @@ const TrendingRecipe = ({ title, fetchUrl }) => {
             navigation={false}
             modules={[Autoplay, Navigation]}
             breakpoints={{
+              0: {
+                slidesPerView: 2,
+              },
               640: {
                 slidesPerView: 2,
               },
               768: {
-                slidesPerView: 4,
+                slidesPerView: 3,
               },
               1024: {
+                slidesPerView: 4,
+              },
+              1280: {
                 slidesPerView: 5,
               },
             }}
@@ -55,16 +61,16 @@ const TrendingRecipe = ({ title, fetchUrl }) => {
             {meals.map((meal) => (
               <SwiperSlide
                 key={meal.idMeal}
-                className="px-10 flex justify-center py-5"
+                className="flex justify-center px-2 py-3 sm:px-4 sm:py-5"
               >
                 <Link to={`/recipe/${meal.idMeal}`}>
-                  <div className="relative bg-gray-900 rounded-xl shadow-black/50 overflow-hidden transform transition-transform duration-300 cursor-pointer border border-gray-800 hover:shadow-lg hover:shadow-gray-600/50 hover:-translate-y-1 group w-fit h-fit mb-5">
-                    <div className="absolute inset-0 rounded-xl border-transparent border-2 group-hover:border-cyan-500 transition duration-500"></div>
-                    <div className="flex justify-center item-center p-5">
+                  <div className="group relative mb-2 overflow-hidden rounded-xl border border-gray-800 bg-gray-900 shadow-black/50 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gray-600/50">
+                    <div className="absolute inset-0 rounded-xl border-2 border-transparent transition duration-500 group-hover:border-cyan-500"></div>
+                    <div className="flex items-center justify-center p-3 sm:p-5">
                       <img
                         src={meal?.strMealThumb}
                         alt=""
-                        className="h-30 w-30 rounded-xl border-amber-200 border group-hover:scale-105 transition duration-500"
+                        className="aspect-square w-24 rounded-xl border border-amber-200 object-cover transition duration-500 group-hover:scale-105 sm:w-28 md:w-32"
                       />
                     </div>
                   </div>

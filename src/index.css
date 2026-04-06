@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
 
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
 body{
-    background-color: aliceblue;
-    color:white
+    background-color: rgb(3 7 18);
+    color:white;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
