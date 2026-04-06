@@ -106,6 +106,10 @@ const RecipeDetailView = () => {
           title="More from the same cuisine"
           fetchUrl={`${API_URL}/filter.php?a=${meal?.strArea}`}/>
 
+        <TrendingRecipe
+          title="More from the same category :"
+          fetchUrl={`${API_URL}/filter.php?c=${meal?.strCategory}`}/>
+
       </main>
     </>
   );
